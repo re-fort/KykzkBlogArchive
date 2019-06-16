@@ -16,9 +16,14 @@
               | {{ author.name }}
           div.box-sns
         div.box-article(v-html="entry.body")
+        Adsense(data-ad-client="ca-pub-6267609390272538" data-ad-slot="8585572114")
 </template>
 
 <script>
+  import Adsense from 'vue-google-adsense/dist/Adsense.min.js'
+  Vue.use(require('vue-script2'))
+  Vue.use(Adsense)
+
   export default {
     name: 'Entry',
     props: {
@@ -113,6 +118,10 @@
       border-bottom: 1px solid #d2d2d2
       padding-top: 40px
       padding-bottom: 30px
+
+    .adswrapper
+      margin-bottom: 20px
+      max-height: 300px
 
   @media screen and (max-width: 640px)
     article
