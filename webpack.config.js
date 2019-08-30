@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const extractTextPlugin = require('extract-text-webpack-plugin')
 const copyPlugin = require('copy-webpack-plugin')
+const workboxPlugin = require('workbox-webpack-plugin')
 
 const _project = 'KykzkBlogArchive'
 const _src = 'src'
@@ -113,7 +114,35 @@ module.exports = {
     new copyPlugin([
       './src/static/favicon.png',
       './src/static/apple-touch-icon.png',
+      './manifest.json',
+      {
+        from: './src/static/icons/*.png',
+        to: 'static',
+        transformPath(targetPath) {
+          return targetPath.replace('src/static/', '');
+        },
+      },
     ]),
+    new workboxPlugin.GenerateSW({
+      globDirectory: _dist,
+      swDest: 'service-worker.js',
+      clientsClaim: true,
+      skipWaiting: true,
+      runtimeCaching: [{
+        urlPattern: new RegExp('https://kykzk-blog-archieve-resources.netlify.com/'),
+        handler: 'CacheFirst',
+        options: {
+          cacheName: 'api-cache',
+          expiration: {
+            maxEntries: 100,
+            maxAgeSeconds: 60 * 60 * 24 * 7 * 2,
+          },
+          cacheableResponse: {
+            statuses: [0, 200],
+          },
+        },
+      }]
+    }),
   ],
   devServer: {
     contentBase: path.join(__dirname, _dist),
