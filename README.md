@@ -10,3 +10,4 @@ KykzkBlogArchive
 * 今泉佑唯
 * 志田愛佳
 * 米谷奈々未
+* 長濱ねる
