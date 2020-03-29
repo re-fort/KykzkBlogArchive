@@ -13,3 +13,4 @@ KykzkBlogArchive
 * 長濱ねる
 * 織田奈那
 * 鈴本美愉
+* 平手友梨奈
