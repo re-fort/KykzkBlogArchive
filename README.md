@@ -12,3 +12,4 @@ KykzkBlogArchive
 * 米谷奈々未
 * 長濱ねる
 * 織田奈那
+* 鈴本美愉
