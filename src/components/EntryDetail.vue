@@ -2,7 +2,7 @@
   .columns
     .column.is-8.is-offset-2
       a.button.is-light.is-loading(v-show="isLoading")
-      article(v-for="entry in sortedEntries")
+      article(v-for="entry in selectedEntries")
         div.innerHead
           div.box-date
             time
@@ -32,7 +32,7 @@
   Vue.use(Adsense)
 
   export default {
-    name: 'Entry',
+    name: 'EntryDetail',
     props: {
       author: {
         type: Object,
@@ -40,19 +40,11 @@
       entries: {
         type: Array,
       },
+      id: {
+        type: String,
+      },
       date: {
         type: String,
-      },
-      sort: {
-        type: String,
-        default: 'date',
-      },
-      order: {
-        type: String,
-        default: 'asc',
-      },
-      sortEntries: {
-        type: Function,
       },
       isLoading: {
         type: Boolean,
@@ -64,8 +56,9 @@
       }
     },
     computed: {
-      sortedEntries () {
-        return this.sortEntries(this.sort, this.order)
+      selectedEntries () {
+        const entry = this.entries.filter(entry => this.id === entry.id);
+        return entry
       },
     },
   }
