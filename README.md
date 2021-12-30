@@ -15,3 +15,4 @@ KykzkBlogArchive
 * 鈴本美愉
 * 平手友梨奈
 * 長沢菜々香
+* 守屋茜
