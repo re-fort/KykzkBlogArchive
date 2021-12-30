@@ -16,3 +16,4 @@ KykzkBlogArchive
 * 平手友梨奈
 * 長沢菜々香
 * 守屋茜
+* 渡辺梨加
